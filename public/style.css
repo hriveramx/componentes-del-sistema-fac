@@ -1,0 +1,49 @@
+h1{
+
+    color: #0101a5;
+    background-color: rgb(134, 232, 250);
+    font-size: 50px;
+    text-align: center;
+}
+
+form{
+    background-color: gray;
+    text-align: center;
+    border: 2px solid black;
+    font-size: 25px;
+    padding: 25px;
+
+}
+
+h2, h3, h4{
+
+    color: black;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#parrafo1{
+
+    color: darkorange;
+    background-color: darkgreen;
+    font-size: 18px;
+    text-align: justify;
+
+}
+
+table{
+    text-align: justify;
+    border-style: solid;
+    border-color: black;
+}
+
+#DivTabla{
+    
+    padding: 200px;
+
+    background-image: url("https://s1.eestatic.com/2020/09/12/curiosidades/naturaleza-planeta-tierra/naturaleza-tierra-naturaleza_y_planeta_tierra_520208816_159747714_1706x960.jpg");
+    
+
+}
+
+
