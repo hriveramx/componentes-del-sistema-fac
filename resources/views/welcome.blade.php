@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
     
     
@@ -40,29 +41,29 @@
 
         <form action="#"  method="#">
             <label for="Name">Nombre</label>
-            <input type="Nombre" id="Name" required>
+            <input type="Nombre" id="Name" class="form-control" required>
             <br>
             <label for="Last name" >Apellido</label>
-            <input type="Apellido" id="LastName" required>
+            <input type="Apellido" id="LastName" class="form-control" required>
             <br>
             <label for="age">Edad</label>
-            <input type="number" name="Edad" id="edad" min="0" max="150" step="10">
+            <input type="number" name="Edad" id="edad" min="0" max="150" step="10" class="form-control">
             <br>
             <label for="birthdate">Fecha de nacimiento</label>
-            <input type="date" name="nacimiendo" id="FechaNacimiento">
+            <input type="date" name="nacimiendo" id="FechaNacimiento" class="form-control">
             <br>
             <label for="Email">Correo</label>
-            <input type="email" id="Email">
+            <input type="email" id="Email"class="form-control">
             <br>
             <label for="password">Contraseña</label>
-            <input type="password" id="passw" required>
+            <input type="password" id="passw" class="form-control" required>
             <br>
             
 
 
          <label for="boton">Boton</label>
-         <button  type="submit">Enviar</button>
-         <button  type="reset">Limpiar campos</button>
+         <button  type="submit" class="btn btn-success">Enviar</button>
+         <button  type="reset" class="">Limpiar</button>
         </form>
          <hr>
         <h3>Listas</h3>
