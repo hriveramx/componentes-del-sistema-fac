@@ -11,6 +11,18 @@
     
 </head>
 <body>
+    <div>
+        <ul>
+            <li><a href="{{ route('welcome')}}">Inicio</a></li>
+            <li><a href="{{ route('productos')}}">Productos</a></li>
+            <li><a href="{{ route('contacto')}}">Contacto</a></li>
+            <li><a href="{{ route('acercaDe')}}">Acerca de</a></li>
+        </ul>
+
+    </div>
+
+
+
     <h1>COMPONENTES DEL SISTEMA</h1>
     <hr>
     <!--Comentario en HTML -->

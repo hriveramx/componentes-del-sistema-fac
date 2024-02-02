@@ -20,3 +20,9 @@ Route::get('/', function () {
 Route::get('/productos', function(){
     return view('productos');
 })->name('productos'); //Agregue el nombre de la ruta
+Route::get('/acercaDe' , function(){
+    return view('acercaDe');
+})->name('acercaDe'); //Nombre de la ruta
+Route::get('/contacto' ,function(){
+    return view('contacto');
+})->name('contacto'); //nombre de la ruta

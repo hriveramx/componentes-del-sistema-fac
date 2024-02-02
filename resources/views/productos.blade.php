@@ -7,6 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+    
+
+        <div>
+            <ul>
+                <li><a href="{{ route('welcome') }}">Inicio</a></li>
+                <li><a href="{{ route('productos') }}">Productos</a></li>
+                <li><a href="{{ route('contacto')}}">Contacto</a></li>
+                <li><a href="{{ route('acercaDe')}}">Acerda de</a></li>
+            </ul>
+        </div>
+
     <h1>Lista de productos</h1>
 
     <ul>
