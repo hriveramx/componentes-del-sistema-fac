@@ -12,6 +12,33 @@
     
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('welcome')}}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('productos')}}">Productos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('contacto')}}">Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('acercaDe')}}">Acerca de</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
     <div>
         <ul>
             <li><a href="{{ route('welcome')}}">Inicio</a></li>
@@ -52,12 +79,21 @@
             <label for="birthdate">Fecha de nacimiento</label>
             <input type="date" name="nacimiendo" id="FechaNacimiento" class="form-control">
             <br>
+            <label for="genero">Genero</label>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Seleccióne su genero</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+              </select>
             <label for="Email">Correo</label>
-            <input type="email" id="Email"class="form-control">
+            <input type="email" id="Email"class="form-control" placeholder="name@example.com">
             <br>
             <label for="password">Contraseña</label>
             <input type="password" id="passw" class="form-control" required>
+            
             <br>
+            
+
             
 
 
@@ -79,12 +115,12 @@
          <textarea name="comentarios" id="Text" cols="30" rows="10"></textarea>
          <br>
 
-         <img src="https://desarrolloweb.com/storage/manual_images/WWIe25guH9aTMSYX75ZSzBmcLJXBqoWnVklpatud.jpg" alt="imagen de Laravel" width="200" height="200">
+         <img src="https://desarrolloweb.com/storage/manual_images/WWIe25guH9aTMSYX75ZSzBmcLJXBqoWnVklpatud.jpg" alt="imagen de Laravel" width="300" height="300" class="mx-auto d-block rounded">
 
         <h4>Tablas</h4>
 
     <div>
-        <table>
+        <table class="table">
             <tr>
                 <th>Persona</th>
                 <th>Lunes</th>
