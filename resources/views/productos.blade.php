@@ -19,5 +19,10 @@
 
     </ul>
 
+    <ul>
+        <li><a href="{{ route('welcome') }}">Ir a la página de inicio</a></li>
+    </ul>
+
+
 </body>
 </html>

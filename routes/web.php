@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome'); //Agregue el nombre de la ruta
 
 Route::get('/productos', function(){
     return view('productos');
-
-});
+})->name('productos'); //Agregue el nombre de la ruta
