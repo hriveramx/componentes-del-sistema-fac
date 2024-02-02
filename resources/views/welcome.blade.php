@@ -65,7 +65,7 @@
 
         <h4>Tablas</h4>
 
-    <div id="DivTabla">
+    <div>
         <table>
             <tr>
                 <th>Persona</th>
