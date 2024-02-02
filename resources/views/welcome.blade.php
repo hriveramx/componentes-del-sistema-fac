@@ -19,6 +19,11 @@
         voluptates temporibus accusamus, <a href="#">possimus sed</a> possimus sed tempora pariatur, <br>
          nam ea repellendus perferendis! Deserunt ratione eligendi ad.</p>
 
+         <ul>
+            <li><a href="{{route('productos')}}" id="prodcuto">Ir a la sección de Productos</a></li>
+         </ul>
+         
+
         <h2>Formularios</h2>
 
         <form action="#"  method="#">
