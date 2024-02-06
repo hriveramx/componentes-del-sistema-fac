@@ -53,7 +53,13 @@
                 <li><a href="{{ route('acercaDe')}}">Acerda de</a></li>
             </ul>
         </div>
+        <br>
 
+        @livewire('counter')
+        @livewire('create-post')
+
+        <br>
+        
     <h1>Lista de productos</h1>
 
     <ul class="list-group">

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Counter;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/counter', Counter::class);
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome'); //Agregue el nombre de la ruta
