@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
 
+use App\Livewire\Comisiones;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +30,8 @@ Route::get('/acercaDe' , function(){
 Route::get('/contacto' ,function(){
     return view('contacto');
 })->name('contacto'); //nombre de la ruta
+
+
+
+//Ruta para el componente de Comisiones 
+Route::get('/comisiones', Comisiones::class);
