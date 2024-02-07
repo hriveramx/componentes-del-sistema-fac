@@ -1,8 +1,9 @@
 <div>
 
 <h1>{{ $nombreSistema }}</h1>
+<hr>
 
-
+<h2>Wire click</h2>
 <p>{{ $resultado }}</p>
 <form action="">
     <label for="numero1">Ingrese numero 1</label>
@@ -19,5 +20,8 @@
 
 <hr>
 
-
+<h2>Wire change</h2>
+<label>Ingrese cantidad</label>
+<input name="cantidad" id="cantidad" wire:model="cantidad" wire:change="calcularTotalIva" type="number">
+<p>Resultado: {{ $cantidadTotal }}</p>
 </div>
