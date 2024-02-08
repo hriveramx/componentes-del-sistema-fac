@@ -9,7 +9,7 @@
     <label for="numero1">Ingrese numero 1</label>
     <input type="number" wire:model="numero1">
     <label for="numero2">Ingresar numero 2</label>
-    <input type="number" wire:model="numero2" name="numero2" id="numero2">
+    <input type="number" wire:model="numero2" name="numero2" id="numero20">
 
     <button type="submit">calcular</button>
 </form>
@@ -22,6 +22,46 @@
 
 <h2>Wire change</h2>
 <label>Ingrese cantidad</label>
-<input name="cantidad" id="cantidad" wire:model="cantidad" wire:change="calcularTotalIva" type="number">
+<input name="cantidad" id="cantidad"  wire:model="cantidad" wire:change="calcularTotalIva" type="number">
+<input type="number" wire:model="cantidadTotal">
 <p>Resultado: {{ $cantidadTotal }}</p>
+
+<hr>
+
+<label for="">Subtotal</label>
+<input type="number" name="subtotal" id="subtotal" wire:model="subtotal" wire:change="comisiones">
+<label for="total">Total</label>
+<input type="number" name="total" id="total" wire:model="total" wire:change="comisiones">
+<br>
+
+<label for="">Base de comisión</label>
+ <select name="select" wire:model="TotalSubtotal" wire:change="comisiones">
+    <option value="1">seleccionar opcion</option>
+    <option value="2" selected>Subtotal</option>
+    <option value="3" selected>Total</option>
+
+  </select>
+
+  <label for="">Comision porcentaje</label>
+  <input type="number" name="porcentaje" id="porcentaje" wire:model="porcentaje" wire:change="comisiones">
+
+  <label for="">comisión {{ $resultadoComisiones}} </label>
+  <br>
+
+<br>
+<label for="">%Comisión Gmex</label>
+<input type="number" name="porcentajeG" id="porcentajeG" wire:model="porcentajeGTotal" Wire:change="comisiones">
+<label for="">Comision Gmex {{ $resultadoComisionesGM }}</label>
+<br>
+
+<label for="">%Comisión Gmex</label>
+<input type="number" name="porcentajeG2" id="porcentajeG2" wire:model="porcentajeG2" Wire:change="comisiones">
+<label for="">Comision Gmex {{ $resultadoComisionesGM2 }}</label>
+<br>
+
+<label for="">%Comisión Gmex</label>
+<input type="number" name="porcentajeG3" id="porcentajeG3" wire:model="porcentajeG3" Wire:change="comisiones">
+<label for="">Comision Gmex {{ $resultadoComisionesGM3 }}</label>
+
+
 </div>
