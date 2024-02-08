@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
 
 use App\Livewire\Comisiones;
+use App\Livewire\Modulocomisiones;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::get('/contacto' ,function(){
 
 //Ruta para el componente de Comisiones 
 Route::get('/comisiones', Comisiones::class);
+
+//Ruta para el componente de Modulo de Comisiones
+Route::get('/modulocomisiones', Modulocomisiones::class);
