@@ -24,15 +24,22 @@ class Modulocomisiones extends Component
     public $cantidadBroker_9;
     public $cantidadBroker_10;
     
+    public $CantidadTotal;
+    public $CantidadSubtotal;
+    
+    public $brokers_1_porcentaje;
+    public $brokers_2_porcentaje;
+    public $brokers_3_porcentaje;
+    
     public function mount()
     {
 
-        $this->comisionGeneral = "210,000.00";
+        $this->comisionGeneral = "0";
         $this->basecomision = "total";
         $this->baseComisionPorcentaje = "5.00%";
-        $this->pocentajeComisionGmex = "3.00%";
-        $this->cantidadComisionGmex = "126,000.00";
-        $this->cantidadBroker_1 = "84,000.00";
+        
+        $this->CantidadTotal = "3480000";
+        $this->CantidadSubtotal = "3000000";
 
         $this->brokers = [];
 
@@ -43,8 +50,44 @@ class Modulocomisiones extends Component
             ];
         }
 
-        $this->calcularPorcentajeComisionGmex();
+       // $this->calcularPorcentajeComisionGmex();
+
+        $this->CalcularCantidadComision();
     }
+
+
+
+    public function CalcularCantidadComision(){
+
+        $this->pocentajeComisionGmex = number_format( floatval($this->baseComisionPorcentaje) - floatval($this->brokers_1_porcentaje) - floatval($this->brokers_2_porcentaje) - floatval($this->brokers_3_porcentaje)) . '%';
+        
+       
+        $total = $this->CantidadTotal;
+        $subtotal = $this->CantidadSubtotal;
+        $porcentaje = floatval($this->baseComisionPorcentaje); 
+
+        
+
+        if( $this->basecomision == "total"){
+            $this->comisionGeneral = ($porcentaje * $total)/100;
+            $this->cantidadComisionGmex =(floatval($this->pocentajeComisionGmex) * $total)/100;
+            $this->cantidadBroker_1 = (floatval($this->brokers_1_porcentaje) * $total)/100;
+            $this->cantidadBroker_2 = (floatval($this->brokers_2_porcentaje) * $total)/100;
+            $this->cantidadBroker_3 = (floatval($this->brokers_3_porcentaje) * $total)/100;
+            
+        }else
+        {
+            $this->comisionGeneral = ($porcentaje * $subtotal)/100;
+            $this->cantidadComisionGmex =(floatval($this->pocentajeComisionGmex) * $subtotal)/100;
+            $this->cantidadBroker_1 = (floatval($this->brokers_1_porcentaje) * $subtotal)/100;
+            $this->cantidadBroker_2 = (floatval($this->brokers_2_porcentaje) * $subtotal)/100;
+            $this->cantidadBroker_3 = (floatval($this->brokers_3_porcentaje) * $subtotal)/100;
+
+        }
+        
+
+    }
+
 
     public function calcularPorcentajeComisionGmex()
     {
