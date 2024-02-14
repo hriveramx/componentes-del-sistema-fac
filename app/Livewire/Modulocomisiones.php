@@ -66,6 +66,20 @@ class Modulocomisiones extends Component
 
     //********* */
 
+    public $IdClienteC1;
+    public $IdTicketC1;
+    public $NoDepositoC1;
+    public $ConceptoC1;
+    public $MontoC1;
+    public $Fecha1;
+
+    public $IdClienteC2;
+    public $IdTicketC2;
+    public $NoDepositoC2;
+    public $ConceptoC2;
+    public $MontoC2;
+    public $Fecha2;
+
     
     public $IdGrupo;
     public $IdTicketTablaG;
@@ -135,6 +149,8 @@ class Modulocomisiones extends Component
     public $Total_G6;
 
 
+
+
     
     public function mount()
     {
@@ -149,6 +165,11 @@ class Modulocomisiones extends Component
         
         $this->CantidadTotal = "3480000";
         $this->CantidadSubtotal = "3000000";
+
+        $this->NoDepositoC1 = "1";
+        $this->NoDepositoC2 = "2";
+        $this->ConceptoC1 = "Transferencia Recibida Fact";
+        $this->ConceptoC2 = "Comisión Fact";
 
         $this->brokers = [];
 
@@ -190,7 +211,7 @@ class Modulocomisiones extends Component
        // $this->calcularPorcentajeComisionGmex();
 
         $this->CalcularCantidadComision();
-        $this->llenadoTablaBrokers();
+        //$this->llenadoTablaBrokers();
     }
 
 
@@ -212,7 +233,7 @@ class Modulocomisiones extends Component
             $this->cantidadBroker_1 = (floatval($this->brokers_1_porcentaje) * $total)/100;
             $this->cantidadBroker_2 = (floatval($this->brokers_2_porcentaje) * $total)/100;
             $this->cantidadBroker_3 = (floatval($this->brokers_3_porcentaje) * $total)/100;
-            $this->monto_negativo = (floatval($this->pocentajeComisionGmex) * -$total)/100;
+            $this->MontoC2 = (floatval($this->pocentajeComisionGmex) * -$total)/100;
             
         }else
         {
@@ -221,10 +242,25 @@ class Modulocomisiones extends Component
             $this->cantidadBroker_1 = (floatval($this->brokers_1_porcentaje) * $subtotal)/100;
             $this->cantidadBroker_2 = (floatval($this->brokers_2_porcentaje) * $subtotal)/100;
             $this->cantidadBroker_3 = (floatval($this->brokers_3_porcentaje) * $subtotal)/100;
-            $this->monto_negativo = (($total/1.16) * -floatval($this->pocentajeComisionGmex))/100;
+            $this->MontoC2 = (($total/1.16) * -floatval($this->pocentajeComisionGmex))/100;
             //$this->monto_negativo = (floatval($total)/1.16) * -$this->pocentajeComisionGmex/100;
 
         }
+
+
+        $this->IdClienteC1 = $this->cliente;
+        $this->IdTicketC1 = $this->ticket;
+
+        $this->IdClienteC2 = $this->cliente;
+        $this->IdTicketC2 = $this->ticket;
+
+        $this->MontoC1 = $this->CantidadTotal;
+
+        $this->Fecha1 = $this->fecha;
+        $this->Fecha2 =$this->fecha;
+
+        
+
         
 
         $this->llenadoTablaBrokers();
@@ -245,6 +281,12 @@ class Modulocomisiones extends Component
             $this->Comision = "";
             $this->Monto = "";
             $this->FechaB = "";
+            $this->brokers_1_porcentaje = "0";
+            $this->cantidadBroker_1 = "0";
+            //$this->CalcularCantidadComision();
+
+        
+            
 
             }else{
                 $this->IdBroker = $this->brokers_1_selectCombo;
@@ -253,6 +295,7 @@ class Modulocomisiones extends Component
                 $this->Comision = $this->brokers_1_porcentaje ."%";
                 $this->Monto = $this->cantidadBroker_1;
                 $this->FechaB = $this->fecha;
+                
 
 
             }
@@ -265,6 +308,10 @@ class Modulocomisiones extends Component
             $this->Comision2 = "";
             $this->Monto2 = "";
             $this->FechaB2 = "";
+            $this->brokers_2_porcentaje = "0";
+            $this->cantidadBroker_2 = "0";
+            //$this->CalcularCantidadComision();
+        
 
             }else{
                 $this->IdBroker2 = $this->brokers_2_selectCombo;
@@ -285,7 +332,11 @@ class Modulocomisiones extends Component
             $this->Comision3 = "";
             $this->Monto3 = "";
             $this->FechaB3 = "";
-
+            $this->brokers_3_porcentaje = "0";
+            $this->cantidadBroker_3 = "0";
+            //$this->CalcularCantidadComision();
+            
+        
             }else{
                 $this->IdBroker3 = $this->brokers_3_selectCombo;
                 $this->IdTicket3 = $this->ticket;
@@ -369,16 +420,6 @@ class Modulocomisiones extends Component
 
             $this->Total_G = (-$this->Total_G2)-($this->Total_G3 + $this->Total_G4 + $this->Total_G5 + $this->Total_G6);
             //$this->Total_G4 = -$this->Monto;
-
-
-
-
-
-
-
-
-
-
 
 
 

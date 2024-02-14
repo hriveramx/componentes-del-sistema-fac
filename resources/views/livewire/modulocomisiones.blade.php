@@ -130,21 +130,42 @@
     <input type="Date" wire:model="fecha">
 
 
+<hr>
+
+<table class="table table-light">
+    <td>Id Cliente</td>
+    <td>Id Ticket</td>
+    <td>No Deposito</td>
+    <td>Concepto</td>
+    <td>Monto</td>
+    <td>Fecha</td>
+
+    <tr>
+            <td><input class="form-control" wire:model="IdClienteC1" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+            <td><input class="form-control" wire:model="IdTicketC1" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+            <td><input class="form-control" wire:model="NoDepositoC1" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+            <td><input class="form-control" wire:model="ConceptoC1" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+            <td><input class="form-control" wire:model="MontoC1" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+            <td><input class="form-control" wire:model="Fecha1" type="date" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+            
+    </tr>
+
+    <tr>
+        <td><input class="form-control" wire:model="IdClienteC2" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+        <td><input class="form-control" wire:model="IdTicketC2" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+        <td><input class="form-control" wire:model="NoDepositoC2" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+        <td><input class="form-control" wire:model="ConceptoC2" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+        <td><input class="form-control" wire:model="MontoC2" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+        <td><input class="form-control" wire:model="Fecha2" type="date" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
+        
+    </tr>
 
 
 
-    <table>
 
-        <tr>
-
-            <td>Monto Negativo</td>
-                <td><input class="form-control" wire:model="monto_negativo" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
- 
-                
-        </tr>
+</table>
 
 
-    </table>
 <hr>
 
 <table class="table table-light">
