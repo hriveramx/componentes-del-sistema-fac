@@ -36,6 +36,39 @@ class Comisiones extends Component
     public $resultadoP;
 
 
+    public $paises = [
+        'Mexico',
+        'Colombia',
+        'Argentina',
+
+    ];
+
+    public $pais;
+
+
+    public $active;    
+
+
+
+    public function save(){
+
+        array_push($this->paises, $this->pais);
+        //$this->pais = "";
+        $this->reset('pais');
+
+    }
+
+    public function delete($index){
+        unset($this->paises[$index]);
+
+    }
+
+    public function changeActive($pais){
+        $this->active = $pais;
+
+    }
+
+
 
     public function calcularTotalIva()
     {

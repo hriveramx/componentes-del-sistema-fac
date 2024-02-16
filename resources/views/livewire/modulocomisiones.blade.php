@@ -1,4 +1,20 @@
 <div class="table-responsive">
+
+    @livewire('usuarios')
+
+    <hr>
+    @livewire('solicitudes')
+
+
+    <hr>
+    @livewire('registros')
+    <hr>
+    @livewire('saldos-clientes')
+
+
+
+    <hr>
+    
     <table class="table table-light">
         <tr>
             <td class="">Esquema de comisiones</td>
@@ -117,7 +133,14 @@
  
                 
         </tr>
+
+       
+
     </table>
+
+    <hr>
+    <h3 class="text-center">Datos</h3>
+
     <label for="">Total</label>
     <input type="number" wire:model="CantidadTotal">
     <label for="">Subtotal</label>
@@ -139,6 +162,10 @@
     <td>Concepto</td>
     <td>Monto</td>
     <td>Fecha</td>
+
+
+
+    <h3 class="text-center">Tabla C</h3>
 
     <tr>
             <td><input class="form-control" wire:model="IdClienteC1" type="text" placeholder="">@error('cantidadBroker_2') <p class="text-xs text-red">{{ $message }}</p> @enderror</td>
@@ -167,6 +194,9 @@
 
 
 <hr>
+
+
+<h3 class="text-center">Tabla B</h3>
 
 <table class="table table-light">
     <td>Id Broker</td>
@@ -204,6 +234,10 @@
 </table>
 
 <hr>
+
+
+<h3 class="text-center">Tabla G</h3>
+
 
 <table class="table table-light">
     <td>ID Grupo</td>

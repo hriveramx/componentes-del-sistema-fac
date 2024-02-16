@@ -3,6 +3,10 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\User;
+use App\Models\Registro;
+use App\Models\Solicitud;
+use App\Models\SaldosCliente;
 
 class Modulocomisiones extends Component
 {
@@ -439,6 +443,12 @@ class Modulocomisiones extends Component
 
     public function render()
     {
-        return view('livewire.modulocomisiones');
+        $usuarios = User::All();
+        $registros = Registro::All();
+        $solicitudes = Solicitud::All();
+        $saldosC = SaldosCliente::All();
+
+        
+        return view('livewire.modulocomisiones', compact('usuarios', 'registros','solicitudes','saldosC'));
     }
 }

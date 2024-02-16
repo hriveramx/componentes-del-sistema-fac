@@ -64,4 +64,45 @@
 <label for="">Comision Gmex {{ $resultadoComisionesGM3 }}</label>
 
 
+<hr>
+
+        
+@livewire('create-post')
+@livewire('counter')
+
+
+<hr>
+
+<button type="button" class="btn btn-outline-warning" wire:model="">Warning</button>
+
+<form wire:submit="save" >
+  <input type="text" wire:model="pais">
+  <button>Agregar</button>
+
+</form>
+
+
+
+  <ul class="list-group">
+       @foreach ($paises as $index => $pais)
+           <li class="list-group-item" wire:key="pais-{{$index}}">
+
+            <span wire:mouseenter="changeActive('{{ $pais }}')">
+              ({{ $index }})
+            {{ $pais}}
+
+          </span>
+            <button type="button" class="btn btn-outline-danger" wire:click="delete({{$index}})">
+              X
+            </button>
+          </li>       
+        @endforeach
+
+    
+  </ul>
+
+  {{$active}}
+
+
+
 </div>

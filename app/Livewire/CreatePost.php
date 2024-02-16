@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class CreatePost extends Component
 {
-    public $title ='Titulo Post....';
+    public $title ='Contador';
 
 
     public function render()
