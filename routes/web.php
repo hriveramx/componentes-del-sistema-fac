@@ -6,6 +6,8 @@ use App\Livewire\Counter;
 use App\Livewire\Comisiones;
 use App\Livewire\Modulocomisiones;
 use App\Livewire\ModuloEB;
+use App\Livewire\ModuloEb as LivewireModuloEb;
+use App\Livewire\ModuloEb1;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +42,4 @@ Route::get('/comisiones', Comisiones::class);
 
 //Ruta para el componente de Modulo de Comisiones
 Route::get('/modulocomisiones', Modulocomisiones::class);
-Route::get('/moduloEB', ModuloEB::class);
+Route::get('/moduloEB', ModuloEb1::class);
