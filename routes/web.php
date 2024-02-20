@@ -21,9 +21,7 @@ use App\Livewire\ModuloEb1;
 */
 
 Route::get('/counter', Counter::class);
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome'); //Agregue el nombre de la ruta
+Route::get('/', ModuloEb1::class);  
 
 Route::get('/productos', function(){
     return view('productos');

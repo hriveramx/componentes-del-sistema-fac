@@ -28,13 +28,11 @@
                     <tr>
                         <td>Empresa emisora</td>
                         <td>
-                            <select name="empresaEmisora" id="empresaEmisora" class="form-control"
-                                wire:model="empresaEmisora" >
-                                <option value="0"></option>
-                                <option value="1">TELEMARKETING & BRANDING S.A. DE C.V.</option>
-                                <option value="2">FREEMAN AND SONS SAÍ DE CV</option>
-                                
-                            </select>
+                            <select name="empresaEmisora" id="empresaEmisora" class="form-control" wire:model="empresaEmisora">
+                                @foreach ($empresasEmisoras as $empresa)
+                                    <option value="{{ $empresa->id }}">{{ $empresa->razonsocial }}</option>
+                                @endforeach
+                            </select>   
                         </td>
                         <td>RFC</td>
                         <td><input class="form-control" name="rfcEmisora" wire:model="rfcEmisora" type="text" placeholder="">

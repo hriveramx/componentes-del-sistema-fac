@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\moduloEB;
+use App\Models\Empresaemisora;
 class ModuloEb1 extends Component
 {
 
@@ -31,15 +32,30 @@ class ModuloEb1 extends Component
         ]); 
         
         if($registroEB){
+
+            $this->resetCampos();
             session()->flash('mensajeSuccess', 'Solicitud de Factura creada exitosamente!');
         } else {
             session()->flash('mensajeError', 'Solicitud de Factura no creada!');
         }  
-    }   
+    }
+    
+    public function resetCampos()
+    {
+        $this->ticketEB = '';
+        $this->cliente = '';  
+    }
+
+    public function mount()
+    {
+        $this->empresaEmisora = 1;
+    }
 
     public function render()
     {
         $datos = moduloEB::All();
-        return view('livewire.modulo-eb1',compact('datos'));
+
+        $empresasEmisoras = Empresaemisora::orderBy('razonsocial', 'asc')->get();
+        return view('livewire.modulo-eb1',compact('datos', 'empresasEmisoras'));
     }
 }
