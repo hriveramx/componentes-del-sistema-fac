@@ -1,6 +1,17 @@
 <div>
-    <div>
 
+    @if(session()->has('mensajeSuccess'))
+        <div class="alert alert-success">
+            {{ session('mensajeSuccess') }}
+        </div>
+    @endif
+
+    @if(session()->has('mensajeError'))
+        <div class="alert alert-danger">
+            {{ session('mensajeError') }}
+        </div>
+    @endif
+    <div>
         <form wire:submit.prevent="guardar">
             <table class="table mb-0">
                 <tr>
@@ -8,7 +19,7 @@
                     <td><input class="form-control" readonly value="1" type="text" placeholder=""></td>
                     </td>
                     <td>Cliente:</td>
-                    <td><input class="form-control" readonly wire:model="cliente" type="text" placeholder=""></td>
+                    <td><input class="form-control"  wire:model="cliente" type="text" placeholder=""></td>
                 </tr>
             </table>
     
