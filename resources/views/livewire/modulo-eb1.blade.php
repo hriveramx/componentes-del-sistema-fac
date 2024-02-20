@@ -12,14 +12,14 @@
         </div>
     @endif
     <div>
-        <form wire:submit.prevent="guardar">
+        <form wire:submit.prevent="guardarModuloEB">
             <table class="table mb-0">
                 <tr>
                     <td>Id Ticket:</td>
-                    <td><input class="form-control" readonly value="1" type="text" placeholder=""></td>
+                    <td><input class="form-control" name="ticketEB" wire:model="ticketEB"  type="text" placeholder="ingresar información" required></td>
                     </td>
                     <td>Cliente:</td>
-                    <td><input class="form-control"  wire:model="cliente" type="text" placeholder=""></td>
+                    <td><input class="form-control" name="cliente"  wire:model="cliente" type="text" placeholder="ingresar información" required></td>
                 </tr>
             </table>
     
@@ -30,23 +30,23 @@
                         <td>
                             <select name="empresaEmisora" id="empresaEmisora" class="form-control"
                                 wire:model="empresaEmisora" >
+                                <option value="0"></option>
                                 <option value="1">TELEMARKETING & BRANDING S.A. DE C.V.</option>
                                 <option value="2">FREEMAN AND SONS SAÍ DE CV</option>
                                 
                             </select>
                         </td>
                         <td>RFC</td>
-                        <td><input class="form-control" readonly wire:model="rfc_emisora" type="text" placeholder="">
+                        <td><input class="form-control" name="rfcEmisora" wire:model="rfcEmisora" type="text" placeholder="">
                         </td>
                     </tr>
                     <tr>
                         <td>Nivel</td>
-                        <td><input class="form-control" readonly wire:model="nivel" type="text" placeholder=""></td>
+                        <td><input class="form-control" name="nivel" wire:model="nivel" type="text" placeholder="ingresar información" required></td>
                         <td>Grupo</td>
-                        <td><input class="form-control" readonly wire:model="grupo" type="text" placeholder=""></td>
+                        <td><input class="form-control" name="grupo" wire:model="grupo" type="text" placeholder="ingresar información" required></td>
                         <td>Fecha:</td>
-                        <td><input class="form-control" type="date" wire:model="fechaEmisora"
-                                ></td>
+                        <td><input class="form-control" name="fecha" type="date" wire:model="fecha" required></td>
                     </tr>
                 </table>
     
@@ -189,18 +189,18 @@
                         <td><input class="form-control" wire:model="fechaComprobante" type="text" placeholder=""></td>
                         <td><input class="form-control" wire:model="bancoRceptor" type="text" placeholder=""></td>
                         <td><input class="form-control" wire:model="cuentaReceptora" type="text" placeholder=""></td>
-                        <td><input class="form-control" wire:model="montoDeposito" type="text" placeholder=""></td>
+                        <td><input class="form-control" name="montoDeposito" wire:model="montoDeposito" type="text" required placeholder="ingresar información"></td>
                     </tr>
                         
     
                     <tr>
                         <td>Comprobante Deposito</td>
-                        <td><input class="form-control" wire:model="fechaComprobante" type="file" placeholder=""></td>
+                        <td><input class="form-control" name="fechaComprobante" wire:model="fechaComprobante" type="file" placeholder=""></td>
                     </tr>
     
                     <tr>
                         <td>Validación Deposito</td>
-                        <td><input class="form-control" wire:model="validacionDeposito" type="file" placeholder=""></td>
+                        <td><input class="form-control" name="validacionDeposito" wire:model="validacionDeposito" type="file" placeholder=""></td>
                         <td>
                             <select name="validacion" id="validacion" class="form-control"
                                 wire:model="validacion">
@@ -239,10 +239,10 @@
             @foreach ($datos as $dato)
 
         <tr>
-            <td>EB{{ $dato->id}}</td>
+            <td>EB{{ $dato->id_ticket}}</td>
             <td>{{ $dato->id_cliente}}</td>
             <td>{{ $dato->empresa_emisora}}</td>
-            <td>{{ $dato->id_empresa_emisora}}</td>
+            <td>{{ $dato->id_nivel_emisora}}</td>
             <td>{{ $dato->id_grupo}}</td>
             <td>{{ $dato->fecha_solicitud}}</td>
             <td>{{ $dato->total}}</td>

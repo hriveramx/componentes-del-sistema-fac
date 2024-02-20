@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('modulo_e_b_s', function (Blueprint $table) {
             $table->id();
+            $table->string('id_ticket')->nullable();
             $table->string('id_cliente');
             $table->string('empresa_emisora');
-            $table->string('id_empresa_emisora');
+            $table->string('id_nivel_emisora');
             $table->string('id_grupo');
             $table->date('fecha_solicitud');
             $table->float('total',10);
-            $table->string('comentarios');
-            $table->string('comprobante_pdf');
-            $table->string('validacion_pdf');
+            $table->string('comentarios')->nullable();
+            $table->string('comprobante_pdf')->nullable();
+            $table->string('validacion_pdf')->nullable();
             $table->timestamps();
         });
     }

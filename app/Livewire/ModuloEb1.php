@@ -7,16 +7,30 @@ use App\Models\moduloEB;
 class ModuloEb1 extends Component
 {
 
+    public $ticketEB;
     public $cliente;
     public $empresaEmisora;
-    public function guardar()
+    public $nivel;
+    public $grupo;
+    public $fecha;
+    public $montoDeposito;
+    public $fechaComprobante;
+
+    public function guardarModuloEB()
     {
         $registroEB = moduloEB::create([
+            'id_ticket' => $this->ticketEB,
             'id_cliente' => $this->cliente,
-            'empresa_emisora' => $this->empresaEmisora,
+           'empresa_emisora' => $this->empresaEmisora,
+           'id_nivel_emisora' => $this->nivel,
+           'id_grupo' => $this->grupo,
+            'fecha_solicitud' => $this->fecha,
+            'total' => $this->montoDeposito,
+            'comprobante_pdf' => $this->fechaComprobante,
+
         ]); 
         
-        if($grupoEB){
+        if($registroEB){
             session()->flash('mensajeSuccess', 'Solicitud de Factura creada exitosamente!');
         } else {
             session()->flash('mensajeError', 'Solicitud de Factura no creada!');
