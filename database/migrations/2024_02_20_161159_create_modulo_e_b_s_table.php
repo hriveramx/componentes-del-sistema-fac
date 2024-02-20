@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_ticket')->nullable();
             $table->string('id_cliente');
-            $table->string('empresa_emisora');
+            $table->foreignId('empresa_emisora_id')->constrained('empresaemisoras');
             $table->string('id_nivel_emisora');
             $table->string('id_grupo');
             $table->date('fecha_solicitud');

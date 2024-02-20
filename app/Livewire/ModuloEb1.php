@@ -22,9 +22,9 @@ class ModuloEb1 extends Component
         $registroEB = moduloEB::create([
             'id_ticket' => $this->ticketEB,
             'id_cliente' => $this->cliente,
-           'empresa_emisora' => $this->empresaEmisora,
-           'id_nivel_emisora' => $this->nivel,
-           'id_grupo' => $this->grupo,
+            'empresa_emisora_id' => $this->empresaEmisora,
+            'id_nivel_emisora' => $this->nivel,
+            'id_grupo' => $this->grupo,
             'fecha_solicitud' => $this->fecha,
             'total' => $this->montoDeposito,
             'comprobante_pdf' => $this->fechaComprobante,

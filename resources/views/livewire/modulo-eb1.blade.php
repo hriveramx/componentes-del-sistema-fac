@@ -239,7 +239,7 @@
         <tr>
             <td>EB{{ $dato->id_ticket}}</td>
             <td>{{ $dato->id_cliente}}</td>
-            <td>{{ $dato->empresa_emisora}}</td>
+            <td>{{ $dato->empresaEmisora->razonsocial}}</td>
             <td>{{ $dato->id_nivel_emisora}}</td>
             <td>{{ $dato->id_grupo}}</td>
             <td>{{ $dato->fecha_solicitud}}</td>
