@@ -11,246 +11,203 @@
             {{ session('mensajeError') }}
         </div>
     @endif
-    <div>
-        <form wire:submit.prevent="guardarModuloEB">
-            <table class="table mb-0">
+
+    <form wire:submit.prevent="guardarModuloEB">
+        <table class="table mb-0">
+            <tr>
+                <td>Id Ticket:</td>
+                <td><input class="form-control" name="ticketEB" wire:model="ticketEB"  type="text" placeholder="ingresar información" required></td>
+                </td>
+                <td>Cliente:</td>
+                <td><input class="form-control" name="cliente"  wire:model="cliente" type="text" placeholder="ingresar información" required></td>
+            </tr>
+        </table>
+
+        <table class="table mb-0">
+            <tr>
+                <td>Empresa emisora</td>
+                <td>
+                    <select name="empresaEmisora" id="empresaEmisora" class="form-control" wire:model.live="empresaEmisora" wire:change="actualizarDatosEmpresaEmisora">
+                        
+                        @foreach ($empresasEmisoras as $empresa)
+                            <option value="{{ $empresa->id }}">{{ $empresa->razonsocial }}</option>
+                        @endforeach
+                    </select>   
+                </td>
+                <td>RFC</td>
+                <td><input class="form-control" name="rfcEmisora" wire:model="rfcEmisora" type="text" placeholder="">
+                </td>
+            </tr>
+            <tr>
+                <td>Nivel</td>
+                <td><input class="form-control" wire:model="nivel" type="text" placeholder="ingresar información" required></td>
+                <td>Grupo</td>
+                <td><input class="form-control" name="grupo" wire:model="grupo" type="text" placeholder="ingresar información" required></td>
+                <td>Fecha:</td>
+                <td><input class="form-control" name="fecha" type="date" wire:model="fecha" required></td>
+            </tr>
+        </table>
+    
+        <div class="table-responsive">
+            <table class="table table-light">
                 <tr>
-                    <td>Id Ticket:</td>
-                    <td><input class="form-control" name="ticketEB" wire:model="ticketEB"  type="text" placeholder="ingresar información" required></td>
+                    <td class="">Esquema de comisiones</td>
+                    <td></td>
+                    <td>Comisión: </td>
+                    <td colspan="2"><input class="form-control" wire:model="comisionGeneral" type="text"
+                            placeholder=""></td>
+                    <td>Base comisión</td>
+                    <td>
+                        <select name="basecomision" id="basecomision" class="form-control"
+                            wire:model="basecomision">
+                            <option value="total">Total</option>
+                            <option value="subtotal">Subtotal</option>
+                        </select>
                     </td>
-                    <td>Cliente:</td>
-                    <td><input class="form-control" name="cliente"  wire:model="cliente" type="text" placeholder="ingresar información" required></td>
+                    <td>Comisión</td>
+                    <td><input class="form-control" wire:model="baseComisionPorcentaje" type="text"
+                            placeholder=""></td>
+                </tr>
+                <tr>
+                    <td>% Comisión Gmex</td>
+                    <td>
+                        <input class="form-control" wire:model="pocentajeComisionGmex" type="text"
+                            placeholder="">
+                    </td>
+
+                    <td rowspan="2" class="text-center" style="vertical-align: middle">
+                        <select name="selectComisionBroker_1" id="selectComisionBroker_1" class="form-control"
+                            wire:model="brokers_1_selectCombo">
+                            <option value="1">Broker 1</option>
+                            <option value="2">Broker 2</option>
+                            <option value="3">Broker 3</option>
+                            <option value="4">Broker 4</option>
+                            
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" wire:model="brokers_1_porcentaje">
+                            <option value="0">0%</option>
+                            <option value="1">1%</option>
+                            <option value="2">2%</option>
+                            <option value="3">3%</option>
+                            <option value="4">4%</option>
+                            <option value="5">5%</option>
+                            <option value="6">6%</option>
+                            <option value="7">7%</option>
+                            <option value="8">8%</option>
+                            <option value="9">9%</option>
+                            <option value="10">10%</option>
+                        </select>
+                    </td>
+                    <td rowspan="2" class="text-center" style="vertical-align: middle">
+                        <select name="selectComisionBroker_2" id="selectComisionBroker_2" class="form-control"
+                            wire:model="brokers_2_selectCombo">
+                            <option value="1">Broker 1</option>
+                            <option value="2">Broker 2</option>
+                            <option value="3">Broker 3</option>
+                            <option value="4">Broker 4</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" wire:model="brokers_2_porcentaje"
+                            >
+                            <option value="0">0%</option>
+                            <option value="1">1%</option>
+                            <option value="2">2%</option>
+                            <option value="3">3%</option>
+                            <option value="4">4%</option>
+                            <option value="5">5%</option>
+                            <option value="6">6%</option>
+                            <option value="7">7%</option>
+                            <option value="8">8%</option>
+                            <option value="9">9%</option>
+                            <option value="10">10%</option>
+                        </select>
+                    </td>
+                    <td rowspan="2" class="text-center" style="vertical-align: middle">
+                        <select name="selectComisionBroker_3" id="selectComisionBroker_3" class="form-control"
+                            wire:model="brokers_3_selectCombo">
+                            <option value="" disabled></option>
+                            <option value="1">Broker 1</option>
+                            <option value="2">Broker 2</option>
+                            <option value="3">Broker 3</option>
+                            <option value="4">Broker 4</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" wire:model="brokers_3_porcentaje"
+                            >
+                            <option value="0">0%</option>
+                            <option value="1">1%</option>
+                            <option value="2">2%</option>
+                            <option value="3">3%</option>
+                            <option value="4">4%</option>
+                            <option value="5">5%</option>
+                            <option value="6">6%</option>
+                            <option value="7">7%</option>
+                            <option value="8">8%</option>
+                            <option value="9">9%</option>
+                            <option value="10">10%</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comisión Gmex</td>
+                    <td><input class="form-control" wire:model="cantidadComisionGmex" type="text"
+                            placeholder=""></td>
+
+                    <td><input class="form-control" wire:model="cantidadBroker_1" type="text" placeholder="">
+                    </td>
+                    <td><input class="form-control" wire:model="cantidadBroker_2" type="text" placeholder="">
+                    </td>
+                    <td><input class="form-control" wire:model="cantidadBroker_3" type="text" placeholder="">
+                    </td>
+
                 </tr>
             </table>
-    
-            <div>
-                <table class="table mb-0">
-                    <tr>
-                        <td>Empresa emisora</td>
-                        <td>
-                            <select name="empresaEmisora" id="empresaEmisora" class="form-control" wire:model.live="empresaEmisora" wire:change="actualizarDatosEmpresaEmisora">
-                                
-                                @foreach ($empresasEmisoras as $empresa)
-                                    <option value="{{ $empresa->id }}">{{ $empresa->razonsocial }}</option>
-                                @endforeach
-                            </select>   
-                        </td>
-                        <td>RFC</td>
-                        <td><input class="form-control" name="rfcEmisora" wire:model="rfcEmisora" type="text" placeholder="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nivel</td>
-                        <td><input class="form-control" wire:model="nivel" type="text" placeholder="ingresar información" required></td>
-                        <td>Grupo</td>
-                        <td><input class="form-control" name="grupo" wire:model="grupo" type="text" placeholder="ingresar información" required></td>
-                        <td>Fecha:</td>
-                        <td><input class="form-control" name="fecha" type="date" wire:model="fecha" required></td>
-                    </tr>
-                </table>
-    
-    
-    
-    
-                <div class="table-responsive">
-                    <table class="table table-light">
-                        <tr>
-                            <td class="">Esquema de comisiones</td>
-                            <td></td>
-                            <td>Comisión: </td>
-                            <td colspan="2"><input class="form-control" wire:model="comisionGeneral" type="text"
-                                    placeholder=""></td>
-                            <td>Base comisión</td>
-                            <td>
-                                <select name="basecomision" id="basecomision" class="form-control"
-                                    wire:model="basecomision">
-                                    <option value="total">Total</option>
-                                    <option value="subtotal">Subtotal</option>
-                                </select>
-                            </td>
-                            <td>Comisión</td>
-                            <td><input class="form-control" wire:model="baseComisionPorcentaje" type="text"
-                                    placeholder=""></td>
-                        </tr>
-                        <tr>
-                            <td>% Comisión Gmex</td>
-                            <td>
-                                <input class="form-control" wire:model="pocentajeComisionGmex" type="text"
-                                    placeholder="">
-                            </td>
-    
-                            <td rowspan="2" class="text-center" style="vertical-align: middle">
-                                <select name="selectComisionBroker_1" id="selectComisionBroker_1" class="form-control"
-                                    wire:model="brokers_1_selectCombo">
-                                    <option value="1">Broker 1</option>
-                                    <option value="2">Broker 2</option>
-                                    <option value="3">Broker 3</option>
-                                    <option value="4">Broker 4</option>
-                                    
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control" wire:model="brokers_1_porcentaje"
-                     >
-                                    <option value="0">0%</option>
-                                    <option value="1">1%</option>
-                                    <option value="2">2%</option>
-                                    <option value="3">3%</option>
-                                    <option value="4">4%</option>
-                                    <option value="5">5%</option>
-                                    <option value="6">6%</option>
-                                    <option value="7">7%</option>
-                                    <option value="8">8%</option>
-                                    <option value="9">9%</option>
-                                    <option value="10">10%</option>
-                                </select>
-                            </td>
-                            <td rowspan="2" class="text-center" style="vertical-align: middle">
-                                <select name="selectComisionBroker_2" id="selectComisionBroker_2" class="form-control"
-                                    wire:model="brokers_2_selectCombo">
-                                    <option value="1">Broker 1</option>
-                                    <option value="2">Broker 2</option>
-                                    <option value="3">Broker 3</option>
-                                    <option value="4">Broker 4</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control" wire:model="brokers_2_porcentaje"
-                                    >
-                                    <option value="0">0%</option>
-                                    <option value="1">1%</option>
-                                    <option value="2">2%</option>
-                                    <option value="3">3%</option>
-                                    <option value="4">4%</option>
-                                    <option value="5">5%</option>
-                                    <option value="6">6%</option>
-                                    <option value="7">7%</option>
-                                    <option value="8">8%</option>
-                                    <option value="9">9%</option>
-                                    <option value="10">10%</option>
-                                </select>
-                            </td>
-                            <td rowspan="2" class="text-center" style="vertical-align: middle">
-                                <select name="selectComisionBroker_3" id="selectComisionBroker_3" class="form-control"
-                                    wire:model="brokers_3_selectCombo">
-                                    <option value="" disabled></option>
-                                    <option value="1">Broker 1</option>
-                                    <option value="2">Broker 2</option>
-                                    <option value="3">Broker 3</option>
-                                    <option value="4">Broker 4</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control" wire:model="brokers_3_porcentaje"
-                                    >
-                                    <option value="0">0%</option>
-                                    <option value="1">1%</option>
-                                    <option value="2">2%</option>
-                                    <option value="3">3%</option>
-                                    <option value="4">4%</option>
-                                    <option value="5">5%</option>
-                                    <option value="6">6%</option>
-                                    <option value="7">7%</option>
-                                    <option value="8">8%</option>
-                                    <option value="9">9%</option>
-                                    <option value="10">10%</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Comisión Gmex</td>
-                            <td><input class="form-control" wire:model="cantidadComisionGmex" type="text"
-                                    placeholder=""></td>
-    
-                            <td><input class="form-control" wire:model="cantidadBroker_1" type="text" placeholder="">
-                            </td>
-                            <td><input class="form-control" wire:model="cantidadBroker_2" type="text" placeholder="">
-                            </td>
-                            <td><input class="form-control" wire:model="cantidadBroker_3" type="text" placeholder="">
-                            </td>
-    
-                        </tr>
-                    </table>
-    
-                </div>
-    
-            </div>
-    
-            <div>
-                <table class="table table-light">
-                    <tr>
-                        <td>Fecha Comprobante</td>
-                        <td>Banco Receptor</td>
-                        <td>Cta Receptora</td>
-                        <td>Monto Deposito:</td>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" wire:model="fechaComprobante" type="text" placeholder=""></td>
-                        <td><input class="form-control" wire:model="bancoRceptor" type="text" placeholder=""></td>
-                        <td><input class="form-control" wire:model="cuentaReceptora" type="text" placeholder=""></td>
-                        <td><input class="form-control" name="montoDeposito" wire:model="montoDeposito" type="text" required placeholder="ingresar información"></td>
-                    </tr>
-                        
-    
-                    <tr>
-                        <td>Comprobante Deposito</td>
-                        <td><input class="form-control" name="fechaComprobante" wire:model="fechaComprobante" type="file" placeholder=""></td>
-                    </tr>
-    
-                    <tr>
-                        <td>Validación Deposito</td>
-                        <td><input class="form-control" name="validacionDeposito" wire:model="validacionDeposito" type="file" placeholder=""></td>
-                        <td>
-                            <select name="validacion" id="validacion" class="form-control"
-                                wire:model="validacion">
-                                <option value="validado">Validado</option>
-                                <option value="noValidado">No Validado</option>
-                            </select>
-                        </td>
-                    </tr>
-    
-    
-    
-                </table>
-    
-            </div>
-    
-            <div class="pb-3">
-                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guadar</button>
-            </div>
-        </form>
-    
-        <table class="table mb-0 table-striped table-hover">
+
+        </div>
+
+        <table class="table table-light">
             <tr>
-                <td>Id Ticket</td>
-                <td>Id Cliente</td>
-                <td>Empresa Emisora</td>
-                <td>Id Nivel Empresa</td>
-                <td>Id Grupo</td>
-                <td>Fecha de Solicitud</td>
-                <td>Total</td>
-                <td>Comentarios</td>
-                <td>Comprobante pdf</td>
-                <td>Vlidaciòn pdf</td>   
+                <td>Fecha Comprobante</td>
+                <td>Banco Receptor</td>
+                <td>Cta Receptora</td>
+                <td>Monto Deposito:</td>
+            </tr>
+            <tr>
+                <td><input class="form-control" wire:model="fechaComprobante" type="text" placeholder=""></td>
+                <td><input class="form-control" wire:model="bancoRceptor" type="text" placeholder=""></td>
+                <td><input class="form-control" wire:model="cuentaReceptora" type="text" placeholder=""></td>
+                <td><input class="form-control" name="montoDeposito" wire:model="montoDeposito" type="text" required placeholder="ingresar información"></td>
+            </tr>
+                
+
+            <tr>
+                <td>Comprobante Deposito</td>
+                <td><input class="form-control" name="fechaComprobante" wire:model="fechaComprobante" type="file" placeholder=""></td>
             </tr>
 
+            <tr>
+                <td>Validación Deposito</td>
+                <td><input class="form-control" name="validacionDeposito" wire:model="validacionDeposito" type="file" placeholder=""></td>
+                <td>
+                    <select name="validacion" id="validacion" class="form-control"
+                        wire:model="validacion">
+                        <option value="validado">Validado</option>
+                        <option value="noValidado">No Validado</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
 
-            @foreach ($datos as $dato)
+        <div class="pb-3">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guadar</button>
+        </div>
 
-        <tr>
-            <td>EB{{ $dato->id_ticket}}</td>
-            <td>{{ $dato->id_cliente}}</td>
-            <td>{{ $dato->empresaEmisora->razonsocial}}</td>
-            <td>{{ $dato->id_nivel_emisora}}</td>
-            <td>{{ $dato->id_grupo}}</td>
-            <td>{{ $dato->fecha_solicitud}}</td>
-            <td>{{ $dato->total}}</td>
-            <td>{{ $dato->comentarios}}</td>
-            <td>{{ $dato->comprobante_pdf}}</td>
-            <td>{{ $dato->validacion_pdf}}</td>
-        </tr>
-            
-        @endforeach
-    </div>
+    </form> 
+
+    @include('livewire.listaeb')
     
 </div>
