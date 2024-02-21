@@ -48,7 +48,27 @@ class ModuloEb1 extends Component
 
     public function mount()
     {
-        $this->empresaEmisora = 1;
+        $this->empresaEmisora = EmpresaEmisora::first()->id;
+
+        $this->actualizarDatosEmpresaEmisora();
+    }
+
+    public function actualizarDatosEmpresaEmisora()
+    {
+        $empresa_emisora = Empresaemisora::find($this->empresaEmisora);
+        if($empresa_emisora){
+            $this->grupo = $empresa_emisora->grupo;
+            $this->nivel = $empresa_emisora->nivel;
+        }else{
+            // Manejar el caso donde la empresa no se encuentra
+            $this->resetCamposEmpresaEmisora();
+        }
+    }
+
+    private function resetCamposEmpresaEmisora()
+    {
+        $this->grupo = null;
+        $this->nivel = null;
     }
 
     public function render()

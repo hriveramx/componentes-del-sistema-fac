@@ -28,7 +28,8 @@
                     <tr>
                         <td>Empresa emisora</td>
                         <td>
-                            <select name="empresaEmisora" id="empresaEmisora" class="form-control" wire:model="empresaEmisora">
+                            <select name="empresaEmisora" id="empresaEmisora" class="form-control" wire:model.live="empresaEmisora" wire:change="actualizarDatosEmpresaEmisora">
+                                
                                 @foreach ($empresasEmisoras as $empresa)
                                     <option value="{{ $empresa->id }}">{{ $empresa->razonsocial }}</option>
                                 @endforeach
@@ -40,7 +41,7 @@
                     </tr>
                     <tr>
                         <td>Nivel</td>
-                        <td><input class="form-control" name="nivel" wire:model="nivel" type="text" placeholder="ingresar información" required></td>
+                        <td><input class="form-control" wire:model="nivel" type="text" placeholder="ingresar información" required></td>
                         <td>Grupo</td>
                         <td><input class="form-control" name="grupo" wire:model="grupo" type="text" placeholder="ingresar información" required></td>
                         <td>Fecha:</td>
