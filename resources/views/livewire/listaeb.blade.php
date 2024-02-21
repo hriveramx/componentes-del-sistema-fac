@@ -1,3 +1,6 @@
+
+    <br>
+
 <table class="table mb-0 table-striped table-hover">
     <tr>
         <td>Id Ticket</td>
@@ -13,18 +16,17 @@
     </tr>
 
 
-    @foreach ($datos as $dato)
+
         <tr>
-            <td>EB{{ $dato->id_ticket}}</td>
-            <td>{{ $dato->id_cliente}}</td>
-            <td>{{ $dato->empresaEmisora->razonsocial}}</td>
-            <td>{{ $dato->id_nivel_emisora}}</td>
-            <td>{{ $dato->id_grupo}}</td>
-            <td>{{ $dato->fecha_solicitud}}</td>
-            <td>{{ $dato->total}}</td>
-            <td>{{ $dato->comentarios}}</td>
-            <td>{{ $dato->comprobante_pdf}}</td>
-            <td>{{ $dato->validacion_pdf}}</td>
+            <td>EB{{$ticketEB}}</td>
+            <td>{{$cliente}}</td>
+            <td>{{$empresaEmisoraPre}}</td>
+            <td>{{$nivel}}</td>
+            <td>{{$grupo}}</td>
+            <td>{{$fecha}}</td>
+            <td>{{$montoDeposito}}</td>
+            <td><input class="form-control" name="comentario" wire:model="comentario" type="text" placeholder=""></td>
+            <td></td>
+            <td></td>
         </tr>
-    @endforeach
 </table>

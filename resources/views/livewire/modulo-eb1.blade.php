@@ -16,10 +16,10 @@
         <table class="table mb-0">
             <tr>
                 <td>Id Ticket:</td>
-                <td><input class="form-control" name="ticketEB" wire:model="ticketEB"  type="text" placeholder="ingresar información" required></td>
+                <td><input class="form-control" name="ticketEB" wire:model="ticketEB" wire:change="actualizarDatosEmpresaEmisora" type="text" placeholder="ingresar información" required></td>
                 </td>
                 <td>Cliente:</td>
-                <td><input class="form-control" name="cliente"  wire:model="cliente" type="text" placeholder="ingresar información" required></td>
+                <td><input class="form-control" name="cliente"  wire:model="cliente" wire:change="actualizarDatosEmpresaEmisora" type="text" placeholder="ingresar información" required></td>
             </tr>
         </table>
 
@@ -35,7 +35,7 @@
                     </select>   
                 </td>
                 <td>RFC</td>
-                <td><input class="form-control" name="rfcEmisora" wire:model="rfcEmisora" type="text" placeholder="">
+                <td><input class="form-control" name="rfc" wire:model="rfc" type="text" placeholder="">
                 </td>
             </tr>
             <tr>
@@ -59,14 +59,13 @@
                     <td>Base comisión</td>
                     <td>
                         <select name="basecomision" id="basecomision" class="form-control"
-                            wire:model="basecomision">
+                            wire:model="basecomision" wire:change="CalcularCantidadComision">
                             <option value="total">Total</option>
                             <option value="subtotal">Subtotal</option>
                         </select>
                     </td>
                     <td>Comisión</td>
-                    <td><input class="form-control" wire:model="baseComisionPorcentaje" type="text"
-                            placeholder=""></td>
+                    <td><input class="form-control" wire:model="baseComisionPorcentaje" type="text" placeholder="" wire:change="CalcularCantidadComision"></td>
                 </tr>
                 <tr>
                     <td>% Comisión Gmex</td>
@@ -77,7 +76,7 @@
 
                     <td rowspan="2" class="text-center" style="vertical-align: middle">
                         <select name="selectComisionBroker_1" id="selectComisionBroker_1" class="form-control"
-                            wire:model="brokers_1_selectCombo">
+                            wire:model="brokers_1_selectCombo" >
                             <option value="1">Broker 1</option>
                             <option value="2">Broker 2</option>
                             <option value="3">Broker 3</option>
@@ -86,7 +85,7 @@
                         </select>
                     </td>
                     <td>
-                        <select class="form-control" wire:model="brokers_1_porcentaje">
+                        <select class="form-control" wire:model="brokers_1_porcentaje" wire:change="CalcularCantidadComision">
                             <option value="0">0%</option>
                             <option value="1">1%</option>
                             <option value="2">2%</option>
@@ -110,8 +109,7 @@
                         </select>
                     </td>
                     <td>
-                        <select class="form-control" wire:model="brokers_2_porcentaje"
-                            >
+                        <select class="form-control" wire:model="brokers_2_porcentaje" wire:change="CalcularCantidadComision">
                             <option value="0">0%</option>
                             <option value="1">1%</option>
                             <option value="2">2%</option>
@@ -136,8 +134,7 @@
                         </select>
                     </td>
                     <td>
-                        <select class="form-control" wire:model="brokers_3_porcentaje"
-                            >
+                        <select class="form-control" wire:model="brokers_3_porcentaje" wire:change="CalcularCantidadComision">
                             <option value="0">0%</option>
                             <option value="1">1%</option>
                             <option value="2">2%</option>
@@ -202,12 +199,18 @@
             </tr>
         </table>
 
+        @include('livewire.listaeb')
+
+
         <div class="pb-3">
             <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guadar</button>
         </div>
 
+        <a href="{{ route('controlEB')}}">ControlEB</a>
+        
+
     </form> 
 
-    @include('livewire.listaeb')
+    
     
 </div>

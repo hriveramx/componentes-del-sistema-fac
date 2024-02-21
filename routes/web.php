@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
 
 use App\Livewire\Comisiones;
+use App\Livewire\ControlEb1;
 use App\Livewire\Modulocomisiones;
 use App\Livewire\ModuloEB;
 use App\Livewire\ModuloEb as LivewireModuloEb;
@@ -26,6 +27,7 @@ Route::get('/', ModuloEb1::class);
 Route::get('/productos', function(){
     return view('productos');
 })->name('productos'); //Agregue el nombre de la ruta
+
 Route::get('/acercaDe' , function(){
     return view('acercaDe');
 })->name('acercaDe'); //Nombre de la ruta
@@ -41,3 +43,6 @@ Route::get('/comisiones', Comisiones::class);
 //Ruta para el componente de Modulo de Comisiones
 Route::get('/modulocomisiones', Modulocomisiones::class);
 Route::get('/moduloEB', ModuloEb1::class);
+
+
+Route::get('/controlEB', ControlEb1::class)->name('controlEB');
