@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('saldos_clientes', function (Blueprint $table) {
+        Schema::create('saldos_brokers', function (Blueprint $table) {
             $table->id();
+            $table->string('id_broker');
+            $table->string('id_ticket');
             $table->string('cliente');
-            $table->string('ticket');
-            $table->integer('numeroDeposito');
-            $table->string('concepto');
-            $table->float('monto',9);
+            $table->float('comision',5);
+            $table->float('monto',10);
             $table->date('fecha');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('saldos_clientes');
+        Schema::dropIfExists('saldos_brokers');
     }
 };

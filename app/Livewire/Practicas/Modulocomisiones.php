@@ -446,9 +446,9 @@ class Modulocomisiones extends Component
         $usuarios = User::All();
         $registros = Registro::All();
         $solicitudes = Solicitud::All();
-        $saldosC = SaldosCliente::All();
+       // $saldosC = SaldosCliente::All();
 
         
-        return view('livewire.modulocomisiones', compact('usuarios', 'registros','solicitudes','saldosC'));
+        return view('livewire.Practicas.modulocomisiones', compact('usuarios', 'registros','solicitudes','saldosC'));
     }
 }

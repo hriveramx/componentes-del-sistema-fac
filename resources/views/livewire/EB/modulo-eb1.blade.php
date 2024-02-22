@@ -16,7 +16,7 @@
         <table class="table mb-0">
             <tr>
                 <td>Id Ticket:</td>
-                <td><input class="form-control" name="ticketEB" wire:model="ticketEB" wire:change="actualizarDatosEmpresaEmisora" type="text" placeholder="ingresar información" required></td>
+                <td><input class="form-control" name="ticketEB" wire:model="ticketEB" wire:change="actualizarDatosEmpresaEmisora" type="text" placeholder="ingresar información"  required></td>
                 </td>
                 <td>Cliente:</td>
                 <td>
@@ -42,14 +42,14 @@
                     </select>   
                 </td>
                 <td>RFC</td>
-                <td><input class="form-control" name="rfc" wire:model="rfc" type="text" placeholder="">
+                <td><input class="form-control" name="rfc" wire:model="rfc" type="text" disabled placeholder="">
                 </td>
             </tr>
             <tr>
                 <td>Nivel</td>
-                <td><input class="form-control" wire:model="nivel" type="text" placeholder="ingresar información" required></td>
+                <td><input class="form-control" wire:model="nivel" type="text" placeholder="ingresar información" disabled required></td>
                 <td>Grupo</td>
-                <td><input class="form-control" name="grupo" wire:model="grupo" type="text" placeholder="ingresar información" required></td>
+                <td><input class="form-control" name="grupo" wire:model="grupo" type="text" placeholder="ingresar información" disabled required></td>
                 <td>Fecha:</td>
                 <td><input class="form-control" name="fecha" type="date" wire:model="fecha" wire:change="CalcularCantidadComision" required></td>
             </tr>
@@ -222,6 +222,10 @@
         
 
     </form> 
+
+    @include('livewire.EB.listasaldosclientes')
+    @include('livewire.EB.listasaldoscuentas')
+    @include('livewire.EB.listasaldosbrokers')
 
     
     

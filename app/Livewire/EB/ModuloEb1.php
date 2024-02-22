@@ -7,6 +7,10 @@ use App\Models\moduloEB;
 use App\Models\Empresaemisora;
 use App\Models\Banco;
 use App\Models\Cliente;
+use App\Models\SaldosBroker;
+use App\Models\SaldosCliente;
+use App\Models\SaldosCtas;
+
 class ModuloEb1 extends Component
 {
 
@@ -167,6 +171,9 @@ class ModuloEb1 extends Component
         $bancos = Banco::All();
         $clientes = Cliente::All();
         $empresasEmisoras = Empresaemisora::orderBy('razonsocial', 'asc')->get();
-        return view('livewire.EB.modulo-eb1',compact('datos', 'empresasEmisoras','bancos','clientes'));
+        $saldosClientes = SaldosCliente::All();
+        $saldosCuentas = SaldosCtas::All();
+        $saldosBrokers = SaldosBroker::All();
+        return view('livewire.EB.modulo-eb1',compact('datos', 'empresasEmisoras','bancos','clientes','saldosClientes','saldosCuentas','saldosBrokers'));
     }
 }

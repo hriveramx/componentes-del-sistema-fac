@@ -11,6 +11,6 @@ class Usuarios extends Component
     {
 
         $usuarios = User::All();
-        return view('livewire.usuarios',compact('usuarios'));
+        return view('livewire.Practicas.usuarios',compact('usuarios'));
     }
 }

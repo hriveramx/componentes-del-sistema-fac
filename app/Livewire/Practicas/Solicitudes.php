@@ -10,6 +10,6 @@ class Solicitudes extends Component
     public function render()
     {
         $solicitudes = Solicitud::All();
-        return view('livewire.solicitudes',compact('solicitudes'));
+        return view('livewire.Practicas.solicitudes',compact('solicitudes'));
     }
 }
