@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Counter;
+use App\Livewire\Practicas\Counter;
 
-use App\Livewire\Comisiones;
-use App\Livewire\ControlEb1;
-use App\Livewire\Modulocomisiones;
-use App\Livewire\ModuloEB;
-use App\Livewire\ModuloEb as LivewireModuloEb;
-use App\Livewire\ModuloEb1;
+use App\Livewire\Practicas\Comisiones;
+use App\Livewire\EB\ControlEb1;
+use App\Livewire\Practicas\Modulocomisiones;
+//use App\Livewire\ModuloEB;
+//use App\Livewire\ModuloEb as LivewireModuloEb;
+use App\Livewire\EB\ModuloEb1;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +46,5 @@ Route::get('/moduloEB', ModuloEb1::class);
 
 
 Route::get('/controlEB', ControlEb1::class)->name('controlEB');
+
+//Route::get('/controlEB', ControlEb1::class)->name('controlEB');

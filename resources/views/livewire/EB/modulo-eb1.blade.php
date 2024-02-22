@@ -11,7 +11,7 @@
             {{ session('mensajeError') }}
         </div>
     @endif
-
+<!-- Informacion del cliente -->
     <form wire:submit.prevent="guardarModuloEB">
         <table class="table mb-0">
             <tr>
@@ -19,7 +19,14 @@
                 <td><input class="form-control" name="ticketEB" wire:model="ticketEB" wire:change="actualizarDatosEmpresaEmisora" type="text" placeholder="ingresar información" required></td>
                 </td>
                 <td>Cliente:</td>
-                <td><input class="form-control" name="cliente"  wire:model="cliente" wire:change="actualizarDatosEmpresaEmisora" type="text" placeholder="ingresar información" required></td>
+                <td>
+                    <select name="cliente" id="cliente" class="form-control" wire:model.live="cliente" wire:change="actualizarDatosCliente" >
+                        
+                        @foreach ($clientes as $cliente)
+                            <option value="{{ $cliente->id }}">{{ $cliente->cliente }}</option>
+                        @endforeach
+                    </select>   
+                </td>
             </tr>
         </table>
 
@@ -44,10 +51,10 @@
                 <td>Grupo</td>
                 <td><input class="form-control" name="grupo" wire:model="grupo" type="text" placeholder="ingresar información" required></td>
                 <td>Fecha:</td>
-                <td><input class="form-control" name="fecha" type="date" wire:model="fecha" required></td>
+                <td><input class="form-control" name="fecha" type="date" wire:model="fecha" wire:change="CalcularCantidadComision" required></td>
             </tr>
         </table>
-    
+    <!--Equema de comisiones-->
         <div class="table-responsive">
             <table class="table table-light">
                 <tr>
@@ -165,7 +172,7 @@
             </table>
 
         </div>
-
+                <!--Deposito-->
         <table class="table table-light">
             <tr>
                 <td>Fecha Comprobante</td>
@@ -174,10 +181,15 @@
                 <td>Monto Deposito:</td>
             </tr>
             <tr>
-                <td><input class="form-control" wire:model="fechaComprobante" type="text" placeholder=""></td>
-                <td><input class="form-control" wire:model="bancoRceptor" type="text" placeholder=""></td>
-                <td><input class="form-control" wire:model="cuentaReceptora" type="text" placeholder=""></td>
-                <td><input class="form-control" name="montoDeposito" wire:model="montoDeposito" type="text" required placeholder="ingresar información"></td>
+                <td><input class="form-control" wire:model="fechaComprobante" type="date" readonly placeholder=""></td>
+                <td><select name="bancoReceptor" id="bancoReceptor" class="form-control" wire:model.live="bancoReceptor" wire:change="actualizarDatosBanco">
+                        
+                    @foreach ($bancos as $banco)
+                        <option value="{{ $banco->id }}">{{ $banco->abreviado}}</option>
+                    @endforeach
+                </select> </td>
+                <td><input class="form-control" wire:model="cuentaReceptora" type="number" placeholder=""></td>
+                <td><input class="form-control" name="montoDeposito" wire:model="montoDeposito" wire:change="CalcularCantidadComision" type="text" required placeholder="ingresar información"></td>
             </tr>
                 
 
@@ -199,7 +211,7 @@
             </tr>
         </table>
 
-        @include('livewire.listaeb')
+        @include('livewire.EB.listaeb')
 
 
         <div class="pb-3">

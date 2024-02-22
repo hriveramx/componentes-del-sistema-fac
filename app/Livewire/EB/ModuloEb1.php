@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\EB;
 
 use Livewire\Component;
 use App\Models\moduloEB;
 use App\Models\Empresaemisora;
+use App\Models\Banco;
+use App\Models\Cliente;
 class ModuloEb1 extends Component
 {
 
@@ -31,6 +33,9 @@ class ModuloEb1 extends Component
     public $cantidadBroker_1;
     public $cantidadBroker_2;
     public $cantidadBroker_3;
+    public $bancoReceptorMostrar;
+    public $bancoReceptor;
+    public $clientePre;
 
 
     public $ticketPre;
@@ -39,7 +44,7 @@ class ModuloEb1 extends Component
     {
         $registroEB = moduloEB::create([
             'id_ticket' => $this->ticketEB,
-            'id_cliente' => $this->cliente,
+            'id_cliente' => $this->clientePre,
             'empresa_emisora_id' => $this->empresaEmisora,
             'id_nivel_emisora' => $this->nivel,
             'id_grupo' => $this->grupo,
@@ -70,12 +75,14 @@ class ModuloEb1 extends Component
         $this->baseComisionPorcentaje = "5%";
         $this->basecomision = "total";
         $this->empresaEmisora = EmpresaEmisora::first()->id;
+        $this->cliente = Cliente::first()->id;
 
         $this->fecha = "2024-02-21";
         $this->fechaComprobante = $this->fecha;
 
         $this->actualizarDatosEmpresaEmisora();
         $this->CalcularCantidadComision();
+        $this->actualizarDatosCliente();
     }
 
     public function actualizarDatosEmpresaEmisora()
@@ -90,7 +97,33 @@ class ModuloEb1 extends Component
             // Manejar el caso donde la empresa no se encuentra
             $this->resetCamposEmpresaEmisora();
         }
+
+        
+
     }
+
+    public function actualizarDatosCliente(){
+
+        $clienteEB = Cliente::find($this->cliente);
+        if($clienteEB){
+            $this->clientePre = $clienteEB->cliente;
+
+        }
+
+    }
+
+    public function actualizarDatosBanco()
+    {
+        $banco = Banco::find($this->bancoReceptor);
+        if($banco){
+            $this->bancoReceptorMostrar = $banco->abreviado;
+        }else{
+            // Manejar el caso donde la empresa no se encuentra
+            //$this->resetCamposEmpresaEmisora();
+        }
+    }
+
+    
 
     private function resetCamposEmpresaEmisora()
     {
@@ -100,6 +133,7 @@ class ModuloEb1 extends Component
 
     public function CalcularCantidadComision(){
 
+        $this->fechaComprobante = $this->fecha;
         $this->pocentajeComisionGmex = floatval($this->baseComisionPorcentaje) - floatval($this->brokers_1_porcentaje) - floatval($this->brokers_2_porcentaje) - floatval($this->brokers_3_porcentaje). '%';
         $monto = $this->montoDeposito;
         $porcentaje = floatval($this->baseComisionPorcentaje); 
@@ -124,18 +158,15 @@ class ModuloEb1 extends Component
         }
     }
 
-    public function PrevisualisacionTabla(){
-        
-       
-
-    }
+    
 
 
     public function render()
     {
         $datos = moduloEB::All();
-
+        $bancos = Banco::All();
+        $clientes = Cliente::All();
         $empresasEmisoras = Empresaemisora::orderBy('razonsocial', 'asc')->get();
-        return view('livewire.modulo-eb1',compact('datos', 'empresasEmisoras'));
+        return view('livewire.EB.modulo-eb1',compact('datos', 'empresasEmisoras','bancos','clientes'));
     }
 }

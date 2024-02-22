@@ -1,6 +1,6 @@
 
     <br>
-
+    <h4 class="text-center">Previsualización de la Tabla</h4>
 <table class="table mb-0 table-striped table-hover">
     <tr>
         <td>Id Ticket</td>
@@ -19,7 +19,7 @@
 
         <tr>
             <td>EB{{$ticketEB}}</td>
-            <td>{{$cliente}}</td>
+            <td>{{$clientePre}}</td>
             <td>{{$empresaEmisoraPre}}</td>
             <td>{{$nivel}}</td>
             <td>{{$grupo}}</td>
