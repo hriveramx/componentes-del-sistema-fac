@@ -1,6 +1,6 @@
 <div class="table-responsive">
 
-    @livewire('Practicas.usuarios')
+    
 
     <hr>
     @livewire('Practicas.solicitudes')
@@ -8,8 +8,7 @@
 
     <hr>
     @livewire('Practicas.registros')
-    <hr>
-    @livewire('Practicas.saldos-clientes')
+    
 
     
 

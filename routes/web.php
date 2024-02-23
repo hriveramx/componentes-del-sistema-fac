@@ -9,6 +9,9 @@ use App\Livewire\Practicas\Modulocomisiones;
 //use App\Livewire\ModuloEB;
 //use App\Livewire\ModuloEb as LivewireModuloEb;
 use App\Livewire\EB\ModuloEb1;
+use App\Livewire\EB\SaldosClientes;
+use App\Livewire\EB\SaldosCuentas;
+use App\Livewire\EB\SaldosBrokers;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +49,8 @@ Route::get('/moduloEB', ModuloEb1::class);
 
 
 Route::get('/controlEB', ControlEb1::class)->name('controlEB');
+Route::get('/saldosclientes', SaldosClientes::class)->name('saldosclientes');
+Route::get('/saldoscuentas', SaldosCuentas::class)->name('saldoscuentas');
+Route::get('/saldosbrokers', SaldosBrokers::class)->name('saldosbrokers');
 
 //Route::get('/controlEB', ControlEb1::class)->name('controlEB');

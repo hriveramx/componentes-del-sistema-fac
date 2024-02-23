@@ -17,19 +17,18 @@
 
 
 
-    @foreach ($saldosCuentas as $cuentas)
+
     <tr>
-        <td>{{ $cuentas->id_grupo}}</td>
-        <td>{{ $cuentas->id_ticket}}</td>
-        <td>{{ $cuentas->cliente_cc_ticket}}</td>
-        <td>{{ $cuentas->concepto}}</td>
-        <td>{{ $cuentas->banco}}</td>
-        <td>{{ $cuentas->cuenta}}</td>
-        <td>{{ $cuentas->clave_rastreo}}</td>
-        <td>{{ $cuentas->total}}</td>
-        <td>{{ $cuentas->comision_gmex}}</td>
-        <td>{{ $cuentas->fecha}}</td>
+        <td>{{$grupo}}</td>
+        <td>EB{{$ticketEB}}</td>
+        <td>{{$clientePre}}</td>
+        <td>EB{{$ticketEB}}{{$grupo}}</td>
+        <td>{{$bancoReceptorMostrar}}</td>
+        <td>{{$cuentaReceptora}}</td>
+        <td><input class="form-control" name="claveRastreo" wire:model="claveRastreo" type="number" placeholder=""></td>
+        <td>{{$montoDeposito}}</td>
+        <td>{{$cantidadComisionGmex}}</td>
+        <td>{{$fechaComprobante}}</td>
     </tr>
-@endforeach
 </table>
 </div>

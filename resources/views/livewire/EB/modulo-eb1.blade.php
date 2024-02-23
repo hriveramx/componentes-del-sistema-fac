@@ -83,11 +83,10 @@
 
                     <td rowspan="2" class="text-center" style="vertical-align: middle">
                         <select name="selectComisionBroker_1" id="selectComisionBroker_1" class="form-control"
-                            wire:model="brokers_1_selectCombo" >
-                            <option value="1">Broker 1</option>
-                            <option value="2">Broker 2</option>
-                            <option value="3">Broker 3</option>
-                            <option value="4">Broker 4</option>
+                            wire:model="brokers_1_selectCombo" wire:change="llenadoTablaBrokers" >
+                            @foreach ($brokers as $broker)
+                            <option value="{{ $broker->id }}">{{ $broker->broker }}</option>
+                              @endforeach
                             
                         </select>
                     </td>
@@ -108,11 +107,10 @@
                     </td>
                     <td rowspan="2" class="text-center" style="vertical-align: middle">
                         <select name="selectComisionBroker_2" id="selectComisionBroker_2" class="form-control"
-                            wire:model="brokers_2_selectCombo">
-                            <option value="1">Broker 1</option>
-                            <option value="2">Broker 2</option>
-                            <option value="3">Broker 3</option>
-                            <option value="4">Broker 4</option>
+                            wire:model="brokers_2_selectCombo" wire:change="llenadoTablaBrokers">
+                            @foreach ($brokers as $broker)
+                            <option value="{{ $broker->id }}">{{ $broker->broker }}</option>
+                              @endforeach
                         </select>
                     </td>
                     <td>
@@ -132,12 +130,10 @@
                     </td>
                     <td rowspan="2" class="text-center" style="vertical-align: middle">
                         <select name="selectComisionBroker_3" id="selectComisionBroker_3" class="form-control"
-                            wire:model="brokers_3_selectCombo">
-                            <option value="" disabled></option>
-                            <option value="1">Broker 1</option>
-                            <option value="2">Broker 2</option>
-                            <option value="3">Broker 3</option>
-                            <option value="4">Broker 4</option>
+                            wire:model="brokers_3_selectCombo" wire:change="llenadoTablaBrokers">
+                            @foreach ($brokers as $broker)
+                            <option value="{{ $broker->id }}">{{ $broker->broker }}</option>
+                              @endforeach
                         </select>
                     </td>
                     <td>
@@ -188,7 +184,7 @@
                         <option value="{{ $banco->id }}">{{ $banco->abreviado}}</option>
                     @endforeach
                 </select> </td>
-                <td><input class="form-control" wire:model="cuentaReceptora" type="number" placeholder=""></td>
+                <td><input class="form-control" wire:model.live="cuentaReceptora" type="number" required placeholder=""></td>
                 <td><input class="form-control" name="montoDeposito" wire:model="montoDeposito" wire:change="CalcularCantidadComision" type="text" required placeholder="ingresar información"></td>
             </tr>
                 
@@ -212,21 +208,22 @@
         </table>
 
         @include('livewire.EB.listaeb')
+        @include('livewire.EB.listasaldosclientes')
+        @include('livewire.EB.listasaldosbrokers')
+        @include('livewire.EB.listasaldoscuentas')
 
 
         <div class="pb-3">
             <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guadar</button>
         </div>
 
-        <a href="{{ route('controlEB')}}">ControlEB</a>
+        <a href="{{ route('controlEB')}}">ControlEB</a><br>
+        <a href="{{ route('saldosclientes')}}">Saldos Clientes</a><br>
+        <a href="{{ route('saldoscuentas')}}">Saldos Cuentas</a><br>
+        <a href="{{ route('saldosbrokers')}}">Saldos Brokers</a><br>
+
         
 
     </form> 
 
-    @include('livewire.EB.listasaldosclientes')
-    @include('livewire.EB.listasaldoscuentas')
-    @include('livewire.EB.listasaldosbrokers')
-
-    
-    
 </div>

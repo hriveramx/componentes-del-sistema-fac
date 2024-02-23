@@ -13,15 +13,21 @@
 
 
 
-    @foreach ($saldosClientes as $saldo)
     <tr>
-        <td>{{ $saldo->id_cliente}}</td>
-        <td>{{ $saldo->id_ticket}}</td>
-        <td>{{ $saldo->numero_deposito}}</td>
-        <td>{{ $saldo->concepto}}</td>
-        <td>{{ $saldo->monto}}</td>
-        <td>{{ $saldo->fecha}}</td>
+        <td>{{ $clientePre}}</td>
+        <td wire:model="ticketEB0">EB{{ $ticketEB}}</td>
+        <td><input class="form-control" name="noDeposito" wire:model="noDeposito" type="number" placeholder=""></td>
+        <td><input class="form-control" name="concepto" wire:model="concepto" type="text" placeholder=""></td>
+        <td>{{$montoDeposito}}</td>
+        <td>{{$fechaComprobante}}</td>
     </tr>
-@endforeach
+    <tr>
+        <td>{{ $clientePre}}</td>
+        <td>EB{{ $ticketEB}}</td>
+        <td><input class="form-control" name="noDeposito2" wire:model="noDeposito2" type="number" placeholder=""></td>
+        <td><input class="form-control" name="concepto2" wire:model="concepto2" type="text" placeholder=""></td>
+        <td>-{{$comisionGeneral}}</td>
+        <td>{{$fechaComprobante}}</td>
+    </tr>
 </table>
 </div>

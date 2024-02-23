@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('saldos_clientes', function (Blueprint $table) {
+        Schema::create('brokers', function (Blueprint $table) {
             $table->id();
-            $table->string('id_cliente');
-            $table->string('id_ticket');
-            $table->integer('numero_deposito')->nullable();
-            $table->string('concepto')->nullable();
-            $table->float('monto',10);
-            $table->date('fecha');
+            $table->string('broker');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('saldos_clientes');
+        Schema::dropIfExists('brokers');
     }
 };

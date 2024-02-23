@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('concepto');
             $table->string('banco');
             $table->string('cuenta');
-            $table->string('clave_rastreo');
+            $table->string('clave_rastreo')->nullable();
             $table->float('total',10);
             $table->float('comision_gmex',10);
             $table->date('fecha');
